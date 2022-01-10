@@ -2,23 +2,42 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 
+const cleanState = {
+  cardName: '',
+  cardDescription: '',
+  cardAttr1: '',
+  cardAttr2: '',
+  cardAttr3: '',
+  cardImage: '',
+  cardRare: 'normal',
+  cardTrunfo: false,
+  hasTrunfo: false,
+  isSaveButtonDisabled: true,
+};
+const initialState = {
+  cardName: '',
+  cardDescription: '',
+  cardAttr1: '',
+  cardAttr2: '',
+  cardAttr3: '',
+  cardImage: '',
+  cardRare: 'normal',
+  cardTrunfo: false,
+  hasTrunfo: false,
+  isSaveButtonDisabled: true,
+  deck: [],
+};
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
-      cardImage: '',
-      cardRare: 'normal',
-      cardTrunfo: false,
-      hasTrunfo: false,
-      isSaveButtonDisabled: true,
-      deck: [],
-      // store deck of cards
-    };
+    this.state = initialState;
+  }
+
+  onSaveButtonClick = () => {
+    const newCard = { ...this.state };
+    delete newCard.deck;
+    this.setState(cleanState);
+    this.setState(({ deck }) => ({ deck: [...deck, newCard] }), console.log(this.deck));
   }
 
   onInputChange = ({ target }) => {
@@ -57,12 +76,6 @@ class App extends React.Component {
     this.setState({ isSaveButtonDisabled: true });
   }
 
-  onSaveButtonClick = () => {
-    const newCard = { ...this.state };
-    delete newCard.deck;
-    this.setState(({ deck }) => ({ deck: [...deck, newCard] }));
-  }
-
   render() {
     const { state, state: { deck }, onInputChange, onSaveButtonClick } = this;
     return (
@@ -74,7 +87,7 @@ class App extends React.Component {
           onInputChange={ onInputChange }
         />
         { deck
-          .map((card) => <Card key={ card.cardName } { ...card } />)}
+          .map((card) => <Card { ...card } key={ card.cardName } />)}
       </main>
     );
   }
