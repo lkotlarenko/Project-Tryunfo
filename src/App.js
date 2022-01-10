@@ -22,7 +22,36 @@ class App extends React.Component {
     const rightValue = target.type === 'checkbox'
       ? target.checked
       : target.value;
-    this.setState({ [target.name]: rightValue });
+    this.setState({ [target.name]: rightValue }, this.validateInputs);
+    // validate on every change
+  }
+
+  validateInputs = () => {
+    const {
+      name,
+      description,
+      image,
+      rare,
+      attr1,
+      attr2,
+      attr3,
+    } = this.state;
+    const max = 90;
+    const sum = 210;
+    if (
+      name !== ''
+      && description !== ''
+      && image !== ''
+      && rare !== ''
+      && attr1 !== ''
+      && attr2 !== ''
+      && attr3 !== ''
+      && (Number(attr1) >= 0 && Number(attr1) <= max)
+      && (Number(attr2) >= 0 && Number(attr2) <= max)
+      && (Number(attr3) >= 0 && Number(attr3) <= max)
+      && Number(attr1) + Number(attr2) + Number(attr3) <= sum
+    ) return this.setState({ isSaveButtonDisabled: false });
+    this.setState({ isSaveButtonDisabled: true });
   }
 
   render() {
