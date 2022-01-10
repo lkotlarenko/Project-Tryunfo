@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class InputHere extends React.Component {
+class Input extends React.Component {
   render() {
+    const {
+      name,
+      value,
+      type,
+      onInputChange,
+    } = this.props;
     return (
       <label>
         <h3>Hello world</h3>
@@ -11,4 +17,11 @@ class InputHere extends React.Component {
   }
 }
 
-export default InputHere;
+Input.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string,
+  type: PropTypes.string,
+  onInputChange: PropTypes.func,
+}.isRequired;
+
+export default Input;

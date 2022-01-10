@@ -20,7 +20,12 @@ class Form extends Component {
     } = this.props;
     return (
       <form>
-        <Input />
+        <Input 
+          name="name"
+          value={ cardName }
+          type="text"
+          onInputChange={ onInputChange }
+        />
         <Input />
         <Input />
         <Input />
