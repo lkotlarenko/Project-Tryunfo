@@ -20,17 +20,56 @@ class Form extends Component {
     } = this.props;
     return (
       <form>
-        <Input 
+        <Input
           name="name"
           value={ cardName }
           type="text"
           onInputChange={ onInputChange }
         />
-        <Input />
-        <Input />
-        <Input />
-        <Input />
-        <Input />
+        <Input
+          name="description"
+          value={ cardDescription }
+          type="textarea"
+          onInputChange={ onInputChange }
+        />
+        <Input
+          name="attr1"
+          value={ cardAttr1 }
+          type="number"
+          onInputChange={ onInputChange }
+        />
+        <Input
+          name="attr2"
+          value={ cardAttr2 }
+          type="number"
+          onInputChange={ onInputChange }
+        />
+        <Input
+          name="attr3"
+          value={ cardAttr3 }
+          type="number"
+          onInputChange={ onInputChange }
+        />
+        <Input
+          name="image"
+          value={ cardImage }
+          type="text"
+          onInputChange={ onInputChange }
+        />
+        <label htmlFor="rare-input">
+          <h3 className="input-title">rarity</h3>
+          <select
+            name="rare"
+            value={ cardRare }
+            onChange={ onInputChange }
+            id="rare-input"
+            data-testid="rare-input"
+          >
+            <option>normal</option>
+            <option>raro</option>
+            <option>muito raro</option>
+          </select>
+        </label>
       </form>
     );
   }
