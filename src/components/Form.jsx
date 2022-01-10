@@ -21,45 +21,51 @@ class Form extends Component {
     return (
       <form>
         <Input
-          name="name"
+          name="cardName"
           value={ cardName }
           type="text"
           onInputChange={ onInputChange }
+          inputTitle="name"
         />
         <Input
-          name="description"
+          name="cardDescription"
           value={ cardDescription }
           type="textarea"
           onInputChange={ onInputChange }
+          inputTitle="description"
         />
         <Input
-          name="attr1"
+          name="cardAttr1"
           value={ cardAttr1 }
           type="number"
           onInputChange={ onInputChange }
+          inputTitle="attribute 1"
         />
         <Input
-          name="attr2"
+          name="cardAttr2"
           value={ cardAttr2 }
           type="number"
           onInputChange={ onInputChange }
+          inputTitle="attribute 2"
         />
         <Input
-          name="attr3"
+          name="cardAttr3"
           value={ cardAttr3 }
           type="number"
           onInputChange={ onInputChange }
+          inputTitle="attribute 3"
         />
         <Input
-          name="image"
+          name="cardImage"
           value={ cardImage }
           type="text"
           onInputChange={ onInputChange }
+          inputTitle="image url"
         />
         <label htmlFor="rare-input">
           <h3 className="input-title">rarity</h3>
           <select
-            name="rare"
+            name="cardRare"
             value={ cardRare }
             onChange={ onInputChange }
             id="rare-input"
@@ -73,7 +79,7 @@ class Form extends Component {
         <label htmlFor="trunfo-input">
           <h3 className="input-title">trunfo</h3>
           <input
-            name="trunfo"
+            name="cardTrunfo"
             checked={ cardTrunfo }
             type="checkbox"
             onChange={ onInputChange }

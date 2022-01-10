@@ -6,15 +6,18 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      description: '',
-      attr1: '',
-      attr2: '',
-      attr3: '',
-      image: '',
-      rare: 'normal',
-      trunfo: false,
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '',
+      cardAttr2: '',
+      cardAttr3: '',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
+      deck: [],
+      // store deck of cards
     };
   }
 
@@ -28,42 +31,50 @@ class App extends React.Component {
 
   validateInputs = () => {
     const {
-      name,
-      description,
-      image,
-      rare,
-      attr1,
-      attr2,
-      attr3,
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
     } = this.state;
     const max = 90;
     const sum = 210;
     if (
-      name !== ''
-      && description !== ''
-      && image !== ''
-      && rare !== ''
-      && attr1 !== ''
-      && attr2 !== ''
-      && attr3 !== ''
-      && (Number(attr1) >= 0 && Number(attr1) <= max)
-      && (Number(attr2) >= 0 && Number(attr2) <= max)
-      && (Number(attr3) >= 0 && Number(attr3) <= max)
-      && Number(attr1) + Number(attr2) + Number(attr3) <= sum
+      cardName !== ''
+      && cardDescription !== ''
+      && cardImage !== ''
+      && cardAttr1 !== ''
+      && cardAttr2 !== ''
+      && cardAttr3 !== ''
+      && cardRare !== ''
+      && (Number(cardAttr1) >= 0 && Number(cardAttr1) <= max)
+      && (Number(cardAttr2) >= 0 && Number(cardAttr2) <= max)
+      && (Number(cardAttr3) >= 0 && Number(cardAttr3) <= max)
+      && Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) <= sum
     ) return this.setState({ isSaveButtonDisabled: false });
     this.setState({ isSaveButtonDisabled: true });
   }
 
+  onSaveButtonClick = () => {
+    const newCard = { ...this.state };
+    delete newCard.deck;
+    this.setState(({ deck }) => ({ deck: [...deck, newCard] }));
+  }
+
   render() {
-    const { state, onInputChange } = this;
+    const { state, state: { deck }, onInputChange, onSaveButtonClick } = this;
     return (
       <main>
         <h1>Tryunfo</h1>
         <Form
           { ...state }
+          onSaveButtonClick={ onSaveButtonClick }
           onInputChange={ onInputChange }
         />
-        <Card />
+        { deck
+          .map((card) => <Card key={ card.cardName } { ...card } />)}
       </main>
     );
   }
