@@ -65,11 +65,31 @@ class Form extends Component {
             id="rare-input"
             data-testid="rare-input"
           >
-            <option>normal</option>
-            <option>raro</option>
-            <option>muito raro</option>
+            <option value="normal">normal</option>
+            <option value="raro">raro</option>
+            <option value="muito raro">muito raro</option>
           </select>
         </label>
+        <label htmlFor="trunfo-input">
+          <h3 className="input-title">trunfo</h3>
+          <input
+            name="trunfo"
+            checked={ cardTrunfo }
+            type="checkbox"
+            onChange={ onInputChange }
+            id="trunfo-input"
+            data-testid="trunfo-input"
+          />
+        </label>
+        <button
+          name="save"
+          disabled={ isSaveButtonDisabled }
+          onClick={ () => onSaveButtonClick() }
+          type="button"
+          data-testid="save-button"
+        >
+          Save
+        </button>
       </form>
     );
   }
