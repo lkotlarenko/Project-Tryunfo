@@ -11,7 +11,6 @@ const cleanState = {
   cardImage: '',
   cardRare: 'normal',
   cardTrunfo: false,
-  hasTrunfo: false,
   isSaveButtonDisabled: true,
 };
 const initialState = {
@@ -33,9 +32,17 @@ class App extends React.Component {
     this.state = initialState;
   }
 
+  validateTrunfo = () => {
+    const { cardTrunfo, hasTrunfo } = this.state;
+    if (cardTrunfo && !hasTrunfo) {
+      this.setState({ hasTrunfo: true });
+    }
+  }
+
   onSaveButtonClick = () => {
     const newCard = { ...this.state };
     delete newCard.deck;
+    this.validateTrunfo();
     this.setState(cleanState);
     this.setState(({ deck }) => ({ deck: [...deck, newCard] }), console.log(this.deck));
   }
