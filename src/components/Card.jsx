@@ -12,9 +12,13 @@ class Card extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      cardPreview,
     } = this.props;
     return (
-      <section id={ cardName }>
+      <section
+        id={ cardName }
+        className={ !cardPreview ? 'card' : 'card-preview' }
+      >
         <h3 data-testid="name-card">{ cardName }</h3>
         <img data-testid="image-card" src={ cardImage } alt={ cardName } />
         <p data-testid="description-card">{cardDescription}</p>
@@ -37,6 +41,7 @@ Card.propTypes = {
   cardImage: PropTypes.string,
   cardRare: PropTypes.string,
   cardTrunfo: PropTypes.bool,
+  cardPreview: PropTypes.bool,
 }.isRequired;
 
 export default Card;

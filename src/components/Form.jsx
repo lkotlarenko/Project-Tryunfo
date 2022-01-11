@@ -43,6 +43,8 @@ class Form extends Component {
           onInputChange={ onInputChange }
           inputTitle="attribute 1"
           dataId="attr1-input"
+          minValue="1"
+          maxValue="90"
         />
         <Input
           name="cardAttr2"
@@ -51,6 +53,8 @@ class Form extends Component {
           onInputChange={ onInputChange }
           inputTitle="attribute 2"
           dataId="attr2-input"
+          minValue="1"
+          maxValue="90"
         />
         <Input
           name="cardAttr3"
@@ -59,6 +63,8 @@ class Form extends Component {
           onInputChange={ onInputChange }
           inputTitle="attribute 3"
           dataId="attr3-input"
+          minValue="1"
+          maxValue="90"
         />
         <Input
           name="cardImage"

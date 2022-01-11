@@ -5,9 +5,9 @@ import Card from './components/Card';
 const cleanState = {
   cardName: '',
   cardDescription: '',
-  cardAttr1: '',
-  cardAttr2: '',
-  cardAttr3: '',
+  cardAttr1: '0',
+  cardAttr2: '0',
+  cardAttr3: '0',
   cardImage: '',
   cardRare: 'normal',
   cardTrunfo: false,
@@ -46,6 +46,14 @@ class App extends React.Component {
       : target.value;
     this.setState({ [target.name]: rightValue }, this.validateInputs);
     // validate on every change
+  }
+
+  deleteCard = (cardToRemove) => {
+    const { deck } = this.state;
+    if (cardToRemove.cardTrunfo) { this.setState({ hasTrunfo: false }); }
+    const cardRemoved = deck.filter((card) => card.cardName !== cardToRemove.cardName
+    && card.cardDescription !== cardToRemove.cardDescription);
+    this.setState({ deck: [...cardRemoved] });
   }
 
   validateInputs = () => {
@@ -89,12 +97,27 @@ class App extends React.Component {
           />
           <Card
             { ...state }
+            cardPreview
           />
         </main>
         {
           deck.map((card) => {
             const id = Math.round(Math.random() * 100);
-            return <Card { ...card } key={ `${card.cardName}${id}` } />;
+            return (
+              <section
+                key={ `${card.cardName}${id}` }
+                className="card-section"
+              >
+                <Card { ...card } />
+                <button
+                  type="button"
+                  data-testid="delete-button"
+                  onClick={ () => this.deleteCard(card) }
+                >
+                  Delete Card
+                </button>
+              </section>
+            );
           })
         }
       </>
