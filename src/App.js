@@ -79,16 +79,25 @@ class App extends React.Component {
   render() {
     const { state, state: { deck }, onInputChange, onSaveButtonClick } = this;
     return (
-      <main>
-        <h1>Tryunfo</h1>
-        <Form
-          { ...state }
-          onSaveButtonClick={ onSaveButtonClick }
-          onInputChange={ onInputChange }
-        />
-        { deck
-          .map((card) => <Card { ...card } key={ card.cardName } />)}
-      </main>
+      <>
+        <main>
+          <h1>Tryunfo</h1>
+          <Form
+            { ...state }
+            onSaveButtonClick={ onSaveButtonClick }
+            onInputChange={ onInputChange }
+          />
+          <Card
+            { ...state }
+          />
+        </main>
+        {
+          deck.map((card) => {
+            const id = Math.round(Math.random() * 100);
+            return <Card { ...card } key={ `${card.cardName}${id}` } />;
+          })
+        }
+      </>
     );
   }
 }

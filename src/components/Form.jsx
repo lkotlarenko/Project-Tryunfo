@@ -26,6 +26,7 @@ class Form extends Component {
           type="text"
           onInputChange={ onInputChange }
           inputTitle="name"
+          dataId="name-input"
         />
         <Input
           name="cardDescription"
@@ -33,6 +34,7 @@ class Form extends Component {
           type="textarea"
           onInputChange={ onInputChange }
           inputTitle="description"
+          dataId="description-input"
         />
         <Input
           name="cardAttr1"
@@ -40,6 +42,7 @@ class Form extends Component {
           type="number"
           onInputChange={ onInputChange }
           inputTitle="attribute 1"
+          dataId="attr1-input"
         />
         <Input
           name="cardAttr2"
@@ -47,6 +50,7 @@ class Form extends Component {
           type="number"
           onInputChange={ onInputChange }
           inputTitle="attribute 2"
+          dataId="attr2-input"
         />
         <Input
           name="cardAttr3"
@@ -54,6 +58,7 @@ class Form extends Component {
           type="number"
           onInputChange={ onInputChange }
           inputTitle="attribute 3"
+          dataId="attr3-input"
         />
         <Input
           name="cardImage"
@@ -61,6 +66,7 @@ class Form extends Component {
           type="text"
           onInputChange={ onInputChange }
           inputTitle="image url"
+          dataId="image-input"
         />
         <label htmlFor="rare-input">
           <h3 className="input-title">rarity</h3>

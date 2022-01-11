@@ -14,8 +14,8 @@ class Card extends Component {
       cardTrunfo,
     } = this.props;
     return (
-      <section>
-        <h3 data-testid="name-card">{cardName}</h3>
+      <section id={ cardName }>
+        <h3 data-testid="name-card">{ cardName }</h3>
         <img data-testid="image-card" src={ cardImage } alt={ cardName } />
         <p data-testid="description-card">{cardDescription}</p>
         <p data-testid="attr1-card">{cardAttr1}</p>
